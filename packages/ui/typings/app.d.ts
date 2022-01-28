@@ -1,4 +1,5 @@
 import { AppJob, AppQueue, Status } from '@bull-board/api/typings/app';
+import { JobInformation } from 'bull';
 
 export { Status } from '@bull-board/api/typings/app';
 
@@ -15,4 +16,5 @@ export interface QueueActions {
   cleanAllCompleted: (queueName: string) => () => Promise<void>;
   pauseQueue: (queueName: string) => () => Promise<void>;
   resumeQueue: (queueName: string) => () => Promise<void>;
+  getRepeatableJobs: (queueName: string) => () => () => Promise<JobInformation[]>;
 }

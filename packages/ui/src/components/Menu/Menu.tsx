@@ -43,7 +43,7 @@ export const Menu = ({
                   <NavLink
                     to={`/queue/${encodeURIComponent(queueName)}${
                       !selectedStatuses[queueName] || selectedStatuses[queueName] === STATUS_LIST[0]
-                        ? ''
+                        ? `?status=${STATUS_LIST[0]}`
                         : `?status=${selectedStatuses[queueName]}`
                     }`}
                     activeClassName={s.active}

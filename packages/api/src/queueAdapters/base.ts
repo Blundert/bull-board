@@ -1,3 +1,4 @@
+import { JobInformation } from 'bull';
 import {
   FormatterField,
   JobCleanStatus,
@@ -53,4 +54,6 @@ export abstract class BaseAdapter {
   public abstract pause(): Promise<void>;
 
   public abstract resume(): Promise<void>;
+
+  public abstract getRepeatableJobs(): Promise<JobInformation[]>;
 }

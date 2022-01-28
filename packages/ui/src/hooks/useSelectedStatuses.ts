@@ -12,6 +12,7 @@ export function useSelectedStatuses(): SelectedStatuses {
   useEffect(() => {
     const query = new URLSearchParams(search);
     const status = (query.get('status') as Status) || STATUS_LIST[0];
+    console.log(status);
     const queue = match ? decodeURIComponent(match?.params.name) : '';
     if (queue) {
       setSelectedStatuses({ ...selectedStatuses, [queue]: status });

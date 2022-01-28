@@ -102,6 +102,9 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin(),
     !isProd && new ReactRefreshWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    })
   ].filter(Boolean),
   devServer: {
     proxy: {

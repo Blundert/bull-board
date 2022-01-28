@@ -9,6 +9,7 @@ import { queuesHandler } from './handlers/queues';
 import { resumeQueueHandler } from './handlers/resumeQueue';
 import { retryAllHandler } from './handlers/retryAll';
 import { retryJobHandler } from './handlers/retryJob';
+import { repeatableJobsHandler } from './handlers/repeatableJobs';
 
 export const appRoutes: AppRouteDefs = {
   entryPoint: {
@@ -18,6 +19,11 @@ export const appRoutes: AppRouteDefs = {
   },
   api: [
     { method: 'get', route: '/api/queues', handler: queuesHandler },
+    {
+      method: 'get',
+      route: '/api/queues/:queueName/repeatable-jobs',
+      handler: repeatableJobsHandler,
+    },
     {
       method: 'get',
       route: '/api/queues/:queueName/:jobId/logs',

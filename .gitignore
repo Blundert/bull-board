@@ -6,3 +6,5 @@ yarn-error.log
 website/build
 docker-compose.dockest-generated.yml
 dockest-error.json
+packages/ui/src/config/dev.ts
+packages/ui/src/config/prod.ts

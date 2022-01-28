@@ -49,4 +49,8 @@ export class BullMQAdapter extends BaseAdapter {
   public resume(): Promise<void> {
     return this.queue.resume();
   }
+
+  public getRepeatableJobs(): Promise<any[]> {
+    throw new Error("missing implentation");
+  }
 }

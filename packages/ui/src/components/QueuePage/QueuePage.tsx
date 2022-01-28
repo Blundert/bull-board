@@ -1,6 +1,8 @@
 import React from 'react';
 import { Store } from '../../hooks/useStore';
 import { JobCard } from '../JobCard/JobCard';
+import { JobDashboard } from '../JobCard/JobDashboard';
+
 import { QueueActions } from '../QueueActions/QueueActions';
 import { StatusMenu } from '../StatusMenu/StatusMenu';
 import s from './QueuePage.module.css';
@@ -11,7 +13,9 @@ export const QueuePage = ({
   selectedStatus,
   actions,
   queue,
+  queues,
 }: {
+  queues: AppQueue[] | undefined;
   queue: AppQueue | undefined;
   actions: Store['actions'];
   selectedStatus: Store['selectedStatuses'];
@@ -19,6 +23,8 @@ export const QueuePage = ({
   if (!queue) {
     return <section>Queue Not found</section>;
   }
+
+  console.log(selectedStatus[queue.name]);
 
   return (
     <section>
@@ -33,7 +39,15 @@ export const QueuePage = ({
           <Pagination pageCount={queue.pagination.pageCount} />
         </div>
       </div>
-      {queue.jobs.map((job) => (
+      {selectedStatus[queue.name] === 'dashboard' ? <JobDashboard
+          queues={queues}
+          key={"dashboard"}
+          status={selectedStatus[queue.name]}
+          actions={{
+            getRepeatableJobs: actions.getRepeatableJobs(queue?.name)(),
+          }}
+        />: 
+      queue.jobs.map((job) => (
         <JobCard
           key={job.id}
           job={job}

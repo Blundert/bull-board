@@ -32,6 +32,7 @@ export const App = ({ api }: { api: Api }) => {
 
                     return (
                       <QueuePage
+                        queues={state.data?.queues}
                         queue={queue}
                         actions={actions}
                         selectedStatus={selectedStatuses}

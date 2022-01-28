@@ -123,6 +123,8 @@ export const useStore = (api: Api): Store => {
   const getJobLogs = (queueName: string) => (job: AppJob) => () =>
     api.getJobLogs(queueName, job.id);
 
+  const getRepeatableJobs = (queueName: string) => () => () => api.getRepeatableJobs(queueName);
+
   return {
     state,
     actions: {
@@ -136,6 +138,7 @@ export const useStore = (api: Api): Store => {
       getJobLogs,
       pauseQueue,
       resumeQueue,
+      getRepeatableJobs
     },
     confirmProps,
     selectedStatuses,

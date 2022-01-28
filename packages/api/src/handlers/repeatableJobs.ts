@@ -5,19 +5,18 @@ import {
 } from '../../typings/app';
 import { queueProvider } from '../providers/queue';
 
-async function jobLogs(
-  req: BullBoardRequest,
+async function repeatableJobs(
+  _req: BullBoardRequest,
   queue: BaseAdapter
 ): Promise<ControllerHandlerReturnType> {
-  const { jobId } = req.params;
-  const logs = await queue.getJobLogs(jobId);
+  const repeatableJobs = await queue.getRepeatableJobs();
 
   return {
     status: 200,
-    body: logs,
+    body: repeatableJobs,
   };
 }
 
-export const jobLogsHandler = queueProvider(jobLogs, {
+export const repeatableJobsHandler = queueProvider(repeatableJobs, {
   skipReadOnlyModeCheck: true,
 });

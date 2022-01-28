@@ -1,4 +1,5 @@
 export const STATUSES = {
+  dashboard: 'dashboard',
   latest: 'latest',
   active: 'active',
   waiting: 'waiting',

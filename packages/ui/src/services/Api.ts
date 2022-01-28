@@ -1,6 +1,7 @@
 import { AppJob, Status } from '@bull-board/api/typings/app';
 import { GetQueuesResponse } from '@bull-board/api/typings/responses';
 import Axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { JobInformation } from 'bull';
 import { toast } from 'react-toastify';
 
 export class Api {
@@ -60,6 +61,12 @@ export class Api {
   public getJobLogs(queueName: string, jobId: AppJob['id']): Promise<string[]> {
     return this.axios.get(
       `/queues/${encodeURIComponent(queueName)}/${encodeURIComponent(`${jobId}`)}/logs`
+    );
+  }
+
+  public getRepeatableJobs(queueName: string): Promise<JobInformation[]> {
+    return this.axios.get(
+      `/queues/${encodeURIComponent(queueName)}/repeatable-jobs`
     );
   }
 

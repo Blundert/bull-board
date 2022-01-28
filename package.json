@@ -12,17 +12,18 @@
     "dashboard"
   ],
   "bugs": {
-    "url": "https://github.com/felixmosh/bull-board/issues"
+    "url": "https://github.com/Blundert/bull-board/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixmosh/bull-board.git"
+    "url": "git+https://github.com/Blundert/bull-board.git"
   },
   "license": "MIT",
-  "author": "felixmosh",
+  "author": "Blundert",
   "contributors": [
     "Erik Engervall <erik.engervall@gmail.com>",
-    "felixmosh"
+    "felixmosh",
+    "Blundert"
   ],
   "workspaces": [
     "packages/*"

@@ -1,4 +1,4 @@
-import { Job, Queue } from 'bull';
+import { Job, JobInformation, Queue } from 'bull';
 import { JobCleanStatus, JobCounts, JobStatus, QueueAdapterOptions } from '../../typings/app';
 import { BaseAdapter } from './base';
 
@@ -46,5 +46,9 @@ export class BullAdapter extends BaseAdapter {
 
   public resume(): Promise<void> {
     return this.queue.resume();
+  }
+
+  public getRepeatableJobs(): Promise<JobInformation[]> {
+    return this.queue.getRepeatableJobs();
   }
 }
